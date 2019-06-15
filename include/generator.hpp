@@ -11,6 +11,10 @@ public:
         {
             if (evaluate(courses, buffer) == 1000)
             {
+                static int counter = 1;
+                std::cout << "Plan " << counter << ":" << std::endl;
+                ++counter;
+
                 for (auto a : buffer)
                 {
                     std::cout << a << " ";
@@ -82,7 +86,7 @@ public:
         {
             for (int j = 0; j < 24; ++j)
             {
-                busy[i][j] = "______";
+                busy[i][j] = "________";
             }
         }
 
@@ -97,10 +101,21 @@ public:
         for (int i = 7; i <= 20; ++i)
         {
             std::cout << i << "\t";
+
             for (int j = 0; j <= 4; ++j)
             {
-                std::cout << busy[j][i].substr(0, 6) << "\t";
+                std::cout << busy[j][i].substr(0, 8);
+
+                int x = busy[j][i].substr(0, 8).length();
+
+                for (int k = 0; k < 8 - x; ++k)
+                {
+                    std::cout << "_";
+                }
+
+                std::cout << "\t";
             }
+
             std::cout << std::endl;
         }
     }
